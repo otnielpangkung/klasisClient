@@ -1,32 +1,54 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="app">
+    <Navbar />
+
+    <div class="main">
+      <Sidebar />
+      <div class="mainPage row justify-content-center">
+        <router-view />
+      </div>
     </div>
-    <router-view/>
   </div>
 </template>
-
+<script>
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import Navbar2 from "./components/Navbar2";
+export default {
+  name: "App",
+  components: {
+    Navbar,
+    Sidebar
+  },
+  data: () => ({
+    //
+  })
+};
+</script>
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  padding: 0;
   color: #2c3e50;
+  min-height: 100vh;
 }
 
-#nav {
-  padding: 30px;
+.mainPage {
+  /* display: flex; */
+  padding: 0 25px;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.main {
+  display: flex;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+@media screen and (max-width: 800px) {
+  .mainPage {
+    padding: 0;
+  }
+  * {
+    display: none;
+  }
 }
 </style>
