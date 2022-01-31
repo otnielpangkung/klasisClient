@@ -20,6 +20,11 @@
             </router-link>
           </li>
           <li v-if="this.role !== 'admin'">
+            <router-link to="/report/tahunan">
+              <i class="fas fa-book-open"></i> Laporan Tahunan
+            </router-link>
+          </li>
+          <li v-if="this.role !== 'admin'">
             <router-link to="/report/bulanan">
               <i class="fas fa-book-open"></i> Laporan Bulanan
             </router-link>

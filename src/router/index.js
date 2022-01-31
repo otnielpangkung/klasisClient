@@ -7,6 +7,7 @@ import InputTransaksi from "../views/InputTransaksi.vue"
 
 import AllTransaksi from "../views/AllTransaksi.vue"
 import ReportBulanan from "../views/LaporanBulanan.vue"
+import ReportTahunan from "../views/LaporanTahunan.vue"
 import RincianMa from "../views/RincianMa.vue"
 import DaftarMa from "../views/DaftarMa.vue"
 import DaftarKelMa from "../views/DaftarKelMa"
@@ -57,6 +58,12 @@ const routes = [
     path: '/report/bulanan',
     name: 'ReportBulanan',
     component: ReportBulanan,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/report/tahunan',
+    name: 'ReportTahunan',
+    component: ReportTahunan,
     meta: { requiresAuth: true }
   },
   {
