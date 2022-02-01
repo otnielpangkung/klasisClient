@@ -192,7 +192,7 @@ export default {
       let tahun = moment(this.selectedMonth).get("year") - 1
       let hasil = 0;
       this.saldoUser.map(item => {
-        if (tahun == item.tahun && item.bulan < bulan) 
+        if (tahun == item.tahun && item.bulan < bulan) {}
       });
       return hasil;
     },
