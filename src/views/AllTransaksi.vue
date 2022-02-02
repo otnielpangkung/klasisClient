@@ -65,7 +65,7 @@
         small
       >
         <template #cell(test)="row">{{row.item.id }}</template>
-        <template #cell(KelompokMA.namaKelMa)="row">{{ row.value }}</template>
+
         <template #cell(debet)="row">{{ formatUang(row.item, "debet") }}</template>
         <template #cell(kredit)="row">{{ formatUang(row.item, "kredit") }}</template>
         <!-- <template #cell(MataAnggaran.namaMataAnggaran)="row">{{ row.value }}</template> -->

@@ -1,6 +1,7 @@
 <template>
   <div class="ReportBulanan">
     <h2 class="mt-4 mb-2">Laporan Bulanan</h2>
+
     <div class="row justify-content-md-center mb-4 mt-4">
       <p>Periode:</p>
       <input class="col form-control ml-3" type="number" v-model="tahun" />
@@ -103,7 +104,7 @@ export default {
   name: "ReportTahunan",
   data() {
     return {
-      tahun: "",
+      tahun: 2022,
       selectedMonth: ""
     };
   },
@@ -143,9 +144,9 @@ export default {
     getJumlah(data) {
       let hasil = 0;
       data?.map(item => {
-        const tanggal = moment(item.tanggalTransaksi).format("MM-YYYY");
-        const periode = moment(this.selectedMonth).format("MM-YYYY");
-        if (periode == tanggal) {
+        const tanggal = moment(item.tanggalTransaksi).format("YYYY");
+
+        if (this.tahun == tanggal) {
           hasil += +item.jumlah;
         }
       });
@@ -172,9 +173,8 @@ export default {
     getTotalPemasukan() {
       let hasil = 0;
       this.transaksiUser.map(item => {
-        const tanggal = moment(item.tanggalTransaksi).format("MM-YYYY");
-        const periode = moment(this.selectedMonth).format("MM-YYYY");
-        if (periode == tanggal && item.JenisTransaksiId == 1) {
+        const tanggal = moment(item.tanggalTransaksi).format("YYYY");
+        if (this.tahun == tanggal && item.JenisTransaksiId == 1) {
           hasil += +item.jumlah;
         }
       });
@@ -183,21 +183,22 @@ export default {
     getTotalPengeluaran() {
       let hasil = 0;
       this.transaksiUser.map(item => {
-        const tanggal = moment(item.tanggalTransaksi).format("MM-YYYY");
-        const periode = moment(this.selectedMonth).format("MM-YYYY");
-        if (periode == tanggal && item.JenisTransaksiId == 2) {
+        const tanggal = moment(item.tanggalTransaksi).format("YYYY");
+        if (this.tahun == tanggal && item.JenisTransaksiId == 2) {
           hasil += +item.jumlah;
         }
       });
       return hasil;
     },
     getSaldoAwal() {
-      let tahun = moment(this.tahun).get("year") - 1;
-      let hasil = 0;
-      this.saldoUser.map(item => {
-        if (tahun > item.tahun) {
+      let hasil = 0
+      this.saldoUser?.forEach(el => {
+        // hasil.push( Number(el.jmlhSaldo))
+        if(el.tahun < this.tahun ) {
+          hasil += Number(el.jmlhSaldo)
         }
-      });
+      })
+      
       return hasil;
     },
     getSaldoAkhir() {
