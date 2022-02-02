@@ -34,6 +34,7 @@
 
     <b-row>
       <b-pagination
+        class="ml-3"
         v-model="currentPage"
         :total-rows="filterData().length"
         :per-page="perPage"
@@ -528,9 +529,9 @@ export default {
 .tableView {
   width: 85vw;
   max-height: 600px;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
   overflow-y: scroll;
-  justify-self: center;
+  /* justify-self: center; */
 }
 table {
   min-width: 2800px;

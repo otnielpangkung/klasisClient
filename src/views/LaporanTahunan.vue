@@ -3,7 +3,7 @@
     <h2 class="mt-4 mb-2">Laporan Bulanan</h2>
     <div class="row justify-content-md-center mb-4 mt-4">
       <p>Periode:</p>
-      <vue-monthly-picker v-model="selectedMonth"></vue-monthly-picker>
+      <input class="col form-control ml-3" type="number" v-model="tahun" />
     </div>
     <div class="row justify-content-md-center">
       <div class="col col-lg-8 justify-content-md-center">
@@ -97,18 +97,17 @@
 
 <script>
 import axios from "../API/axios";
-import VueMonthlyPicker from "vue-monthly-picker";
+
 import moment from "moment";
 export default {
   name: "ReportTahunan",
   data() {
     return {
+      tahun: "",
       selectedMonth: ""
     };
   },
-  components: {
-    VueMonthlyPicker
-  },
+
   computed: {
     kelMa() {
       return this.$store.state.kelMa;
@@ -124,6 +123,11 @@ export default {
     }
   },
   methods: {
+    getTahun() {
+      let hasil = 0;
+      let a = new Date();
+      a = a.slice(0, 4);
+    },
     formatUang(data) {
       let uang = "";
       data = data.toString();
@@ -188,11 +192,11 @@ export default {
       return hasil;
     },
     getSaldoAwal() {
-   
-      let tahun = moment(this.selectedMonth).get("year") - 1
+      let tahun = moment(this.tahun).get("year") - 1;
       let hasil = 0;
       this.saldoUser.map(item => {
-        if (tahun == item.tahun && item.bulan < bulan) {}
+        if (tahun > item.tahun) {
+        }
       });
       return hasil;
     },
@@ -252,6 +256,9 @@ export default {
 </script>
 
 <style scoped>
+input {
+  max-width: 10vw;
+}
 .ReportBulanan {
   width: 85vw;
 }
@@ -274,10 +281,5 @@ td {
 }
 #head {
   text-align-last: left;
-}
-@media screen and (max-width: 800px) {
-  .ReportBulanan {
-    padding-left: 10px;
-  }
 }
 </style>
