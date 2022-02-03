@@ -2,7 +2,7 @@
   <nav v-if="this.userLogin" class="navbar navbar-expand-lg">
     <!-- <img src="../assets/opLogo.png" alt /> -->
     <router-link to="/">
-      <a class="navbar-brand">Gereja Toraja - Klasis Makassar</a>
+      <a class="navbar-brand">Gereja Toraja - Klasis Makassar Tengah</a>
     </router-link>
     <button
       class="navbar-toggler"

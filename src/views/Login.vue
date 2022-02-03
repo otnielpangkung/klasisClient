@@ -1,9 +1,10 @@
 <template>
   <div class="LoginPage" data-aos="zoom-in" data-aos-duration="1500">
-    \
+    
     <img src="../assets/LogoGerejaToraja.png" alt />
     <!-- <p>SISTEM INFORMASI KEUANGAN</p> -->
     <p>Sistem Informasi Keuangan Gereja Toraja</p>
+
     <form @submit.prevent="login">
       <input class="form-control" type="text" v-model="username" placeholder="username" />
       <input class="form-control" type="password" v-model="password" placeholder="password" />

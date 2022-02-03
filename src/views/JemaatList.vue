@@ -112,7 +112,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="user in this.userList" :key="user.id">
+            <tr v-for="user in getUser()" :key="user.id">
               <td>{{user.username}}</td>
               <td id="uang">{{user.Jemaat.namaJemaat}}</td>
               <td id="uang">{{user.role}}</td>
@@ -128,6 +128,7 @@
           </tbody>
         </table>
       </div>
+      {{userList}}
     </div>
   </div>
 </template>
@@ -158,7 +159,16 @@ export default {
       this.jemaatStatus = false;
       this.namaJemaat = "";
     },
-
+getUser() {
+let hasil = []
+hasil = this.userList
+// this.userList?.forEach(el => {
+//   if(el.username !== "otnielPangkung") {
+//     hasil.push(el)
+//   }
+// })
+return hasil
+},
     getJemaat() {
       return axios
         .get("/user/jemaat", {
